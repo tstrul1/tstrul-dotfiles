@@ -32,7 +32,7 @@ Run symlinks script:
 If new oh-my-zsh plugins where added please make sure to recreate archive:
 
 ```
-mv oh-my-zsh.tar.gz .dotfiles-backup/oh-my-zsh.tar.gz`date +%F`
+mv oh-my-zsh.tar.gz .dotfiles-backup/oh-my-zsh.tar.gz.`date +%F`
 tar cvzf oh-my-zsh.tar.gz -C dotfiles .oh-my-zsh
 ```
 
