@@ -3,12 +3,7 @@
 # Backup old file
 echo "Press Enter to start dotfiles backup:"
 read
-echo "Creating previous files backup"s
-mkdir .dotfiles-backup
-for dotfile in $(ls -la1 dotfiles/);do
-    mv ~/${dotfile} .dotfiles-backup/${dotfile}
-done
-echo "Finished backing up dotfiles to .dotfiles-backup"
+. takeBackup.sh
 
 echo "Press Enter to install packages (this could take a while...):"
 read
@@ -37,6 +32,10 @@ while read -r brew_formulae;do brew install $brew_formulae;done < Brewfile
 # Install cask
 echo "Install brew packages"
 while read -r cask_formulae;do brew cask install $cask_formulae;done < Caskfile
+
+# install Oh-My-Zsh
+echo "Install Oh-My-Zsh"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # Create dotfiles symlink
 echo "Press enter to create symlinks:"
