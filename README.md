@@ -8,16 +8,15 @@ git clone git@github.com:tstrul1/tstrul-dotfiles.git
 cd tstrul-dotfiles
 ```
 
-2. Backup current files:
 
-Run Backup & Install script:
+2. Run Backup & Install script:
 
 ```
 ./Install.sh
 ```
 
 ### Update dotfiles without apps:
-1. Run symlinks script:
+Run symlinks script:
 
 ```
 ./createSymLinks.sh
