@@ -33,9 +33,9 @@ while read -r brew_formulae;do brew install $brew_formulae;done < Brewfile
 echo "Install brew packages"
 while read -r cask_formulae;do brew cask install $cask_formulae;done < Caskfile
 
-# install Oh-My-Zsh
-echo "Install Oh-My-Zsh"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# Unpack Oh-My-Zsh
+echo "Unpacking Oh-My-Zsh"
+tar xvzf oh-my-zsh.tar.gz -C ~/
 
 # Create dotfiles symlink
 echo "Press enter to create symlinks:"
