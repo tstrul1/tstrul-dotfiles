@@ -11,8 +11,14 @@ cd tstrul-dotfiles
 2. Backup current files:
 
 Run Backup & Install script:
+
+```
 ./Install.sh
+```
 
 ### Update dotfiles without apps:
 1. Run symlinks script:
+
+```
 ./createSymLinks.sh
+```
