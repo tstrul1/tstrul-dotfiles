@@ -23,7 +23,7 @@ xcode-select --install
 
 # Install pip files
 echo "Install pip packages"
-pip install -r Pipfile
+pip install --user -r Pipfile
 
 # Install Brew packages
 echo "Install brew packages"
