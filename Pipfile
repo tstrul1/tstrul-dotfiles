@@ -1,6 +1,8 @@
 virtualenv
+pytest
 awscli
 ansible
 pulumi
+skaffold
 terraform
 python-openstackclient
