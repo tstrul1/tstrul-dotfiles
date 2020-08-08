@@ -1,7 +1,7 @@
 ## Tstrul's DotFiles
 
 ### Usage:
-1. Clone this repo:
+1. Clone & cd:
 
 ```
 git clone git@github.com:tstrul1/tstrul-dotfiles.git
@@ -25,5 +25,5 @@ Run symlinks script:
 ## Take ad-hoc backup:
 
 ```
-takeBackup.sh
+./takeBackup.sh
 ```
