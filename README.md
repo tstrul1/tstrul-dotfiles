@@ -21,3 +21,9 @@ Run symlinks script:
 ```
 ./createSymLinks.sh
 ```
+
+## Take ad-hoc backup:
+
+```
+takeBackup.sh
+```
