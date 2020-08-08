@@ -1,3 +1,4 @@
 .dotfiles-backup
+.oh-my-zsh
 *.swp
 *.swo

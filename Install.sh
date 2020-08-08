@@ -35,7 +35,7 @@ while read -r cask_formulae;do brew cask install $cask_formulae;done < Caskfile
 
 # Unpack Oh-My-Zsh
 echo "Unpacking Oh-My-Zsh"
-tar xvzf oh-my-zsh.tar.gz -C ~/
+tar xvzf oh-my-zsh.tar.gz -C dotfiles/
 
 # Create dotfiles symlink
 echo "Press enter to create symlinks:"
