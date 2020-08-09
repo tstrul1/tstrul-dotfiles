@@ -34,7 +34,7 @@ plugins=(
     zsh-syntax-highlighting
 )
 zstyle :omz:plugins:ssh-agent agent-forwarding on
-zstyle :omz:plugins:ssh-agent identities ## ADD PEM FILES. EXAMPLE: "id_rsa LabKey.pem"
+zstyle :omz:plugins:ssh-agent identities id_rsa deployerL.pem  deployer.pem  id_rsa_adm.pem  LabKey.pem  pulsar-prod.pem  smartexe.pem  terraform-prod.pem  terraform-stg.pem Jenkins.pem microcosm-prod.pem microcosm.pem ## ADD PEM FILES. EXAMPLE: "id_rsa LabKey.pem"
 source $ZSH/oh-my-zsh.sh
 autoload -U +X bashcompinit && bashcompinit
 
