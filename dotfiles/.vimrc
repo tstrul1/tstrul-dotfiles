@@ -48,10 +48,9 @@ set smartcase      " ignore case if search pattern is all lowercase, case-sensit
 "" Code folding
 ""
 set foldenable   " Folding #1
-set foldlevel=999 " Folding #2
+set foldlevelstart=20
 set foldmethod=indent " Folding #3
-set foldnestmax=3 " Folding #4
-set nofoldenable " Dont start folded
+set foldnestmax=10 " Folding #4
 """" ramp fold keys
 
 "" Plugins
