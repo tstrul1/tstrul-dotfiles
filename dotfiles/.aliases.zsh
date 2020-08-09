@@ -1,6 +1,5 @@
 alias tzgit='cd ~/Github_Projects'
 alias diff='colordiff'
-alias sed=gsed
 fixhost() {
         sed -e $1d -i ~/.ssh/known_hosts
 }

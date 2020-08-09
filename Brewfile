@@ -11,6 +11,7 @@ tmux
 helm
 helmfile
 stern
+krew
 vault
 vagrant
 terraform
