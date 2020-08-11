@@ -22,6 +22,7 @@ kube-ps1
 kubectx
 kubernetes-cli
 minikube
+k9s
 ncurses
 nmap
 watch
