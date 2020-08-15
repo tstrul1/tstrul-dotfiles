@@ -6,7 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 #export PATH=$PATH:$HOME/bin:/usr/local/bin:$PATH:~/Library/Python/2.7/bin:~/bin:~/.npm-global/bin:${KREW_ROOT:-$HOME/.krew}/bin
-export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH:~/Library/Python/2.7/bin"
+export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH:$HOME/Library/Python/2.7/bin:$HOME/Library/Python/3.8/bin"
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 # ZSH_THEME_RANDOM_CANDIDATES=(

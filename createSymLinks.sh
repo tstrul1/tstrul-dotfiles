@@ -1,7 +1,5 @@
 #!/bin/bash
 echo "Creating symlinks for dotfiles"
 mkdir -p  ~/Github_Projects ~/Credentials
-touch ~/Credentialsaliases.zsh
+touch ~/Credentials/aliases.zsh
 ln -s ${PWD}/dotfiles/.* ~
-ln -s ${PWD}/dotfiles/* ~
-
