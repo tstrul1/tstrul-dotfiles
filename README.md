@@ -12,32 +12,45 @@ cd tstrul-dotfiles
 2. Run Backup & Install script:
 
 ```
+Make install
+OR: 
 ./Install.sh
+```
+
+Or you can choose which tasks/installations by running
+
+```
+make/make list
+```
+
+and then run desired task:
+
+```
+makee <task>
+```
+
+### Take ad-hoc backup:
+
+```
+make backup
+OR: 
+./takeBackup.sh
 ```
 
 ### Update dotfiles without apps:
 Run symlinks script:
 
 ```
+make symlinks
+OR: 
 ./createSymLinks.sh
-```
-
-## Take ad-hoc backup:
-
-```
-./takeBackup.sh
 ```
 
 ## Pushing changes:
 If new oh-my-zsh plugins where added please make sure to recreate archive:
 
 ```
-mv oh-my-zsh.tar.gz .dotfiles-backup/oh-my-zsh.tar.gz.`date +%F`
-tar cvzf oh-my-zsh.tar.gz -C dotfiles .oh-my-zsh
-```
-
-Or you can just run:
-
-```
+make updateOhMyZsh
+OR:
 ./updateOhMyZsh.sh
 ```
