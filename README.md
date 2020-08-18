@@ -12,7 +12,7 @@ cd tstrul-dotfiles
 2. Run Backup & Install script:
 
 ```
-Make install
+make install
 OR: 
 ./Install.sh
 ```
@@ -20,20 +20,22 @@ OR:
 Or you can choose which tasks/installations by running
 
 ```
-make/make list
+make
+OR:
+make list
 ```
 
 and then run desired task:
 
 ```
-makee <task>
+make <task>
 ```
 
 ### Take ad-hoc backup:
 
 ```
 make backup
-OR: 
+OR:
 ./takeBackup.sh
 ```
 
@@ -42,7 +44,7 @@ Run symlinks script:
 
 ```
 make symlinks
-OR: 
+OR:
 ./createSymLinks.sh
 ```
 
@@ -50,7 +52,7 @@ OR:
 If new oh-my-zsh plugins where added please make sure to recreate archive:
 
 ```
-make updateOhMyZsh
+make updateomz
 OR:
 ./updateOhMyZsh.sh
 ```

@@ -23,13 +23,13 @@ pip:
 	python ./get-pip.py
 	pip install --user -r ./Pipfile
 
-OhMyZsh:
+ohmyzsh:
 	tar xvzf ./oh-my-zsh.tar.gz -C ./dotfiles/
 
 xcode:
 	xcode-select --install
 
-updateOhMyZsh:
+updateomz:
 	./updateOhMyZsh.sh
 
 
