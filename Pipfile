@@ -1,4 +1,6 @@
 virtualenv
+pipenv
+pipreqs
 pytest
 awscli
 ansible
