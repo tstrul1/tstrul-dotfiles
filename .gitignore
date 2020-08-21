@@ -4,3 +4,4 @@
 *.swo
 dotfiles/.vim/plugged/*
 dotfiles/.vim/autoload/plug.vim
+dotfiles/.vim/.fzf/

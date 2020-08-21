@@ -72,10 +72,16 @@ call plug#begin('~/.vim/plugged')   "" need to check each and every one
    Plug 'airblade/vim-gitgutter'
    Plug 'nathanaelkane/vim-indent-guides'
    Plug 'ConradIrwin/vim-bracketed-paste'
+   Plug 'junegunn/fzf', { 'dir': '~/.vim/.fzf', 'do': './install --bin' }
+   Plug 'junegunn/fzf.vim'
 call plug#end()
 
 "" Plugin Configurations
 ""
+
+" FZF config
+let g:fzf_layout = { 'down': '~20%' }
+let g:fzf_action = { 'enter': 'tabedit'}
 
 " ALE config
 let g:ale_lint_on_save = 0
@@ -93,6 +99,7 @@ let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen = 1
 let NERDTreeDirArrows = 1
 let NERDTreeMapActivateNode='<right>'
+let NERDTreeCustomOpenArgs={'file':{'where': 't'}}
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif " close window in only tree remains
 
 " Indent Guides config
@@ -113,7 +120,7 @@ function! ToggleStatusline()
         set laststatus=1
         let s:hidden_statusline = 0
     else
-        set laststatus=2
+        Set laststatus=2
         let s:hidden_statusline = 1
     endif
 endfunction
@@ -131,19 +138,40 @@ function! ToggleLineNumber()
     endif
 endfunction
 
+" Cursor liner function
+"
+let s:show_cursor_line = 1
+function! ToggleCursorLine()
+    if s:show_cursor_line  == 1
+        set cursorline
+        let s:show_cursor_line = 0
+    else
+        set nocursorline
+        let s:show_cursor_line = 1
+    endif
+endfunction
+
+
+
+
+
+
+
 " Key Mapping
 "
 let mapleader = ',' " Leader Key
 "
-cmap w!! w !sudo tee % >/dev/null<CR> " Sudo save (:w!!)
+nnoremap <leader>k :Keymap " show keymaps (leader + k)
 nnoremap <leader><ESC> :nohlsearch<CR> " exit search highlight (leader + esc)
-nnoremap <leader>tt :retab<cr> " Convert all tabs to spaces (leader + tt)
-vnoremap <leader>64 y:let @"=system('base64 --decode', @")<cr>gvP
+map <leader>t  :tabe<CR> " Open new tab  (leader + t)
+nnoremap <leader>rt :retab<cr> " Convert all tabs to spaces (leader + tt)
+vnoremap <leader>64 y:let @"=system('base64 --decode', @")<cr>gvP " base64 decode (leader + 64)
 nnoremap <leader>s :call ToggleStatusline()<CR> " statusline toggle (leader + s)
 nnoremap <leader>n :call ToggleLineNumber()<CR> " Line number toggle (leader + n)
-nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR> " Open/Clode folding (space)
+nnoremap <leader>l :call ToggleCursorLine()<CR> " Cursor line  toggle (leader + l)
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR> " Open/Close folding (space)
 
-" Plugin - toggles(leader + u)
+" Plugin - toggles
 " 
 map <leader>u :PlugInstall<CR> " Update vundle plugins (leader + u)
 map <leader>d :ALEToggle<CR> " Check code (ALE) (leader + d)
@@ -154,3 +182,12 @@ map <S-Left>  :tabp<CR> " Move between tabs (NERDTree) (Shft + <-)
 noremap <Leader>cc :TComment<CR> " Comment out lines (tcomment) (leader + cc)
 map <leader>i :IndentGuidesToggle<CR> " Show indentation lines (IndentGuides) (leader + i)
 map <leader>g :GitGutterToggle<CR> " Toggle gitgutter (leader + g)
+nnoremap <Leader>f :Files<CR> " CtrlP like
+nnoremap <Leader>b :Buffers<CR> " CtrlP like
+
+" Commands
+"
+" Sudo save (:W)
+command W execute "w !sudo tee % >/dev/null" 
+" Show kwymap
+command Keymap execute "!bat  ~/.vimrc -r 160:"
