@@ -122,6 +122,7 @@ if len(gitbranch#name()) > 0
 else
     let b:gitstatus = ""
 endif
+set laststatus=2
 set statusline=                          " left align
 set statusline+=%2*\                     " blank char
 set statusline+=%2*\%{StatuslineMode()}
@@ -154,7 +155,7 @@ function! StatuslineMode()
     endif
 endfunction
 
-let s:hidden_statusline = 0
+let s:hidden_statusline = 1
 function! ToggleStatusline()
     if s:hidden_statusline  == 1
         set laststatus=1
