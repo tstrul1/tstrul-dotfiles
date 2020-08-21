@@ -43,7 +43,7 @@ set listchars=tab:>.,trail:.,extends:#,nbsp:. " show invisible chars #2
 
 ""search
 ""
-set hlsearch       " highlight reg. ex. in @/ register
+set hlsearch       " highlight search result
 set ignorecase     " Search case insensitive...
 set smartcase      " ignore case if search pattern is all lowercase, case-sensitive otherwise
 
@@ -53,7 +53,6 @@ set foldenable   " Folding #1
 set foldlevelstart=20 " Folding #2
 set foldmethod=indent " Folding #3
 set foldnestmax=10 " Folding #4
-"""" ramp fold keys
 
 "" Plugins
 ""
@@ -117,11 +116,6 @@ let g:gitgutter_enabled = 0 " start disabled
 
 "" Status Line
 ""
-if len(gitbranch#name()) > 0 
-    let b:gitstatus = gitbranch#name()
-else
-    let b:gitstatus = ""
-endif
 set laststatus=2
 set statusline=                          " left align
 set statusline+=%2*\                     " blank char
@@ -133,7 +127,7 @@ set statusline+=%1*\ >>
 set statusline+=%=                       " right align
 set statusline+=%*
 set statusline+=%3*\%h%m%r\               " file flags (help, read-only, modified)
-set statusline+=%{b:gitstatus}\           " git branch
+set statusline+=%{gitbranch#name()}\              "%{b:gitstatus}\            git branch
 set statusline+=%3*\%l/%L\            " line count
 set statusline+=%3*\%y|                   " file type
 set statusline+=[%{strlen(&fenc)?&fenc:'none'}]               " long filename (trimmed to 25 chars)
@@ -203,15 +197,19 @@ endfunction
 
 
 
+
+
+
+
 " Key Mapping
 "
 let mapleader = ',' " Leader Key
 "
-nnoremap <leader>k :Keymap " show keymaps (leader + k)
-nnoremap <leader><ESC> :nohlsearch<CR> " exit search highlight (leader + esc)
+nnoremap <leader>k :Keymap " Show keymaps (leader + k)
+nnoremap <leader><ESC> :nohlsearch<CR> " Exit search highlight (leader + esc)
 nnoremap <leader>rt :retab<cr> " Convert all tabs to spaces (leader + tt)
 vnoremap <leader>64 y:let @"=system('base64 --decode', @")<cr>gvP " base64 decode (leader + 64)
-nnoremap <leader>s :call ToggleStatusline()<CR> " statusline toggle (leader + s)
+nnoremap <leader>s :call ToggleStatusline()<CR> " Statusline toggle (leader + s)
 nnoremap <leader>n :call ToggleLineNumber()<CR> " Line number toggle (leader + n)
 nnoremap <leader>l :call ToggleCursorLine()<CR> " Cursor line  toggle (leader + l)
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR> " Open/Close folding (space)
@@ -246,6 +244,3 @@ map <C-P>  :tabp<CR> " Move to previous tab (Ctrl + P)
 command W execute "w !sudo tee % >/dev/null" 
 " Show kwymap
 command Keymap execute "!bat  ~/.vimrc -r 205:"
-
-
-"" statusline
