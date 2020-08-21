@@ -10,6 +10,8 @@ set visualbell " Flash the screen instead of beeping on errors.
 set t_vb= " Disable flashing
 set history=1000 " Increase the undo limit.
 set undolevels=1000  " use many muchos levels of undo
+set ruler " Show the column/row
+set hidden " Buffer enhancement
 set wildmenu        " make tab completion for files/buffers act like bash
 set wildmode=list:full          " show a list when pressing tab and complete first full match
 set backspace=indent,eol,start  " allow backspacing over everything in insert mode
@@ -31,7 +33,7 @@ set expandtab " Convert tabs to spaces.
 set shiftwidth=4  " Number of spaces for each indent
 set tabstop=4  " Number of spaces for each tab
 set softtabstop=4
-set smarttab " Insert “tabstop” number of spaces when the “tab” key is pressed.
+set smarttab " Insert tabstop number of spaces when the tab key is pressed.
 
 "" Visibillity
 ""
@@ -48,7 +50,7 @@ set smartcase      " ignore case if search pattern is all lowercase, case-sensit
 "" Code folding
 ""
 set foldenable   " Folding #1
-set foldlevelstart=20
+set foldlevelstart=20 " Folding #2
 set foldmethod=indent " Folding #3
 set foldnestmax=10 " Folding #4
 """" ramp fold keys
@@ -64,8 +66,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')   "" need to check each and every one
-   Plug 'w0rp/ale'
-   Plug 'itchyny/lightline.vim'
+   Plug 'w0rp/ale' 
    Plug 'scrooloose/nerdtree'
    Plug 'sheerun/vim-polyglot'
    Plug 'tomtom/tcomment_vim'
@@ -74,6 +75,8 @@ call plug#begin('~/.vim/plugged')   "" need to check each and every one
    Plug 'ConradIrwin/vim-bracketed-paste'
    Plug 'junegunn/fzf', { 'dir': '~/.vim/.fzf', 'do': './install --bin' }
    Plug 'junegunn/fzf.vim'
+   Plug 'ap/vim-buftabline'
+   Plug 'itchyny/vim-gitbranch'
 call plug#end()
 
 "" Plugin Configurations
@@ -81,7 +84,11 @@ call plug#end()
 
 " FZF config
 let g:fzf_layout = { 'down': '~20%' }
-let g:fzf_action = { 'enter': 'tabedit'}
+"let g:fzf_action = { 'enter': 'tabedit'} " open in new tab and not buffer
+
+" Buftabline Options
+"
+let g:buftabline_show = 1
 
 " ALE config
 let g:ale_lint_on_save = 0
@@ -99,8 +106,8 @@ let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen = 1
 let NERDTreeDirArrows = 1
 let NERDTreeMapActivateNode='<right>'
-let NERDTreeCustomOpenArgs={'file':{'where': 't'}}
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif " close window in only tree remains
+"let NERDTreeCustomOpenArgs={'file':{'where': 't'}} " open files in new tab instead of buffer
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif " close window if only tree remains
 
 " Indent Guides config
 let g:indent_guides_guide_size = 1
@@ -110,9 +117,42 @@ let g:gitgutter_enabled = 0 " start disabled
 
 "" Status Line
 ""
-let g:lightline = {
-      \ 'colorscheme': 'powerline',
-      \ }
+if len(gitbranch#name()) > 0 
+    let b:gitstatus = gitbranch#name()
+else
+    let b:gitstatus = ""
+endif
+set statusline=                          " left align
+set statusline+=%2*\                     " blank char
+set statusline+=%2*\%{StatuslineMode()}
+set statusline+=%2*\ 
+set statusline+=%1*\ <<
+set statusline+=%1*\ %f                  " short filename              
+set statusline+=%1*\ >>
+set statusline+=%=                       " right align
+set statusline+=%*
+set statusline+=%3*\%h%m%r\               " file flags (help, read-only, modified)
+set statusline+=%{b:gitstatus}\           " git branch
+set statusline+=%3*\%l/%L\            " line count
+set statusline+=%3*\%y|                   " file type
+set statusline+=[%{strlen(&fenc)?&fenc:'none'}]               " long filename (trimmed to 25 chars)
+hi User1 ctermbg=black ctermfg=grey guibg=black guifg=grey
+hi User2 ctermbg=green ctermfg=black guibg=green guifg=black
+hi User3 ctermbg=black ctermfg=lightgreen guibg=black guifg=lightgreen
+
+"" statusline functions
+function! StatuslineMode()
+    let l:mode=mode()
+    if l:mode==#"n"
+        return "NORMAL"
+    elseif l:mode==?"v"
+        return "VISUAL"
+    elseif l:mode==#"i"
+        return "INSERT"
+    elseif l:mode==#"R"
+        return "REPLACE"
+    endif
+endfunction
 
 let s:hidden_statusline = 0
 function! ToggleStatusline()
@@ -120,7 +160,7 @@ function! ToggleStatusline()
         set laststatus=1
         let s:hidden_statusline = 0
     else
-        Set laststatus=2
+        set laststatus=2
         let s:hidden_statusline = 1
     endif
 endfunction
@@ -157,13 +197,17 @@ endfunction
 
 
 
+
+
+
+
+
 " Key Mapping
 "
 let mapleader = ',' " Leader Key
 "
 nnoremap <leader>k :Keymap " show keymaps (leader + k)
 nnoremap <leader><ESC> :nohlsearch<CR> " exit search highlight (leader + esc)
-map <leader>t  :tabe<CR> " Open new tab  (leader + t)
 nnoremap <leader>rt :retab<cr> " Convert all tabs to spaces (leader + tt)
 vnoremap <leader>64 y:let @"=system('base64 --decode', @")<cr>gvP " base64 decode (leader + 64)
 nnoremap <leader>s :call ToggleStatusline()<CR> " statusline toggle (leader + s)
@@ -177,17 +221,30 @@ map <leader>u :PlugInstall<CR> " Update vundle plugins (leader + u)
 map <leader>d :ALEToggle<CR> " Check code (ALE) (leader + d)
 nmap <leader>j :NERDTreeToggle<CR> " Open folder tree (NERDTree) (leader + j)
 nmap <leader>o :NERDTreeFind<CR> " Open folder tree in current dir (NERDTree) (leader + o)
-map <S-Right> :tabn<CR> " Move between tabs (NERDTree) (Shift + ->)
-map <S-Left>  :tabp<CR> " Move between tabs (NERDTree) (Shft + <-)
 noremap <Leader>cc :TComment<CR> " Comment out lines (tcomment) (leader + cc)
 map <leader>i :IndentGuidesToggle<CR> " Show indentation lines (IndentGuides) (leader + i)
 map <leader>g :GitGutterToggle<CR> " Toggle gitgutter (leader + g)
-nnoremap <Leader>f :Files<CR> " CtrlP like
-nnoremap <Leader>b :Buffers<CR> " CtrlP like
+nnoremap <Leader>f :Files<CR> " FZF open files
+
+" Tabs and buffers
+"
+" Buffers
+nnoremap <S-Right> :bnext<CR> " Move between buffers(Shift + ->)
+nnoremap <S-Left> :bprev<CR>  " Move between buffers(Shift + ->)
+nnoremap <C-t> :badd newbuffer<CR> " Create new buffer (Ctrl + t)
+nnoremap <C-D> :bd!<CR> " Close current buffer (Ctrl + d)
+nnoremap <Leader>b :Buffers<CR> " FZF list buffers
+" Tabs
+map <leader>t  :tabe<CR> " Open new tab  (leader + t)
+map <C-N> :tabn<CR> " Move to next tab (Ctrl + N)
+map <C-P>  :tabp<CR> " Move to previous tab (Ctrl + P)
 
 " Commands
 "
 " Sudo save (:W)
 command W execute "w !sudo tee % >/dev/null" 
 " Show kwymap
-command Keymap execute "!bat  ~/.vimrc -r 160:"
+command Keymap execute "!bat  ~/.vimrc -r 205:"
+
+
+"" statusline
