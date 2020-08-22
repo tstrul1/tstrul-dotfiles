@@ -47,12 +47,3 @@ make symlinks
 OR:
 ./createSymLinks.sh
 ```
-
-## Pushing changes:
-If new oh-my-zsh plugins where added please make sure to recreate archive:
-
-```
-make updateomz
-OR:
-./updateOhMyZsh.sh
-```

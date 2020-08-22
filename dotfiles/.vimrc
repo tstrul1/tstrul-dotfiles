@@ -75,7 +75,7 @@ call plug#begin('~/.vim/plugged')   "" need to check each and every one
    Plug 'junegunn/fzf', { 'dir': '~/.vim/.fzf', 'do': './install --bin' }
    Plug 'junegunn/fzf.vim'
    Plug 'ap/vim-buftabline'
-   Plug 'itchyny/vim-gitbranch'
+   Plug 'tpope/vim-fugitive'
 call plug#end()
 
 "" Plugin Configurations
@@ -127,7 +127,8 @@ set statusline+=%1*\ >>
 set statusline+=%=                       " right align
 set statusline+=%*
 set statusline+=%3*\%h%m%r\               " file flags (help, read-only, modified)
-set statusline+=%{gitbranch#name()}\              "%{b:gitstatus}\            git branch
+"set statusline+=%{FugitiveStatusline()}
+set statusline+=%{fugitive#head()}\       " Git branch
 set statusline+=%3*\%l/%L\            " line count
 set statusline+=%3*\%y|                   " file type
 set statusline+=[%{strlen(&fenc)?&fenc:'none'}]               " long filename (trimmed to 25 chars)
