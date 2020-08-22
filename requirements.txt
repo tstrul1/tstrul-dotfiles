@@ -1,0 +1,10 @@
+virtualenv
+pipenv
+pipreqs
+pytest
+awscli
+ansible
+pulumi
+skaffold
+terraform
+python-openstackclient

@@ -1,1 +1,0 @@
-/Users/tzachis/dotfiles/.vim/ftplugin/Jenkinsfile.vim
