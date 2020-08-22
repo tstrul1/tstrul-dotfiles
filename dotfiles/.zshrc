@@ -42,6 +42,7 @@ antigen bundle terraform
 antigen bundle docker
 antigen bundle aws
 antigen bundle gcloud
+antigen bundle heroku
 antigen bundle kubectl
 antigen bundle minikube
 antigen bundle helm
