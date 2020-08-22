@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 echo "Creating previous files backup"s
 mkdir -p .dotfiles-backup/`date +%F`
 for dotfile in $(ls -la1 dotfiles/ | grep -v ^\.$ | grep -v ^\.\.$);do

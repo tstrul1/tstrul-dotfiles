@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Backup old file
 echo "Press Enter to start dotfiles backup:"
