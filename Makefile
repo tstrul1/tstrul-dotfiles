@@ -23,7 +23,7 @@ pip:
 	- pip install --user -r ./requirements.txt
 
 zsh:
-	- curl -L git.io/antigen > ~/antigen.zsh
+	- curl -L git.io/antigen > $HOME/antigen.zsh
 
 xcode:
 	- xcode-select --install

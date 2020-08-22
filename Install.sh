@@ -27,7 +27,7 @@ pip install --user -r requirements.txt
 
 # zsh antigen + oh-my-zsh
 echo "Configure antigen and oh-my-zsh"
-curl -L git.io/antigen > ~/antigen.zsh
+curl -L git.io/antigen > $HOME/antigen.zsh
 
 # Create dotfiles symlinks and const dirs
 echo "Press enter to create symlinks and dirs:"
