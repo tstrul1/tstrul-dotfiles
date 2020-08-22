@@ -64,8 +64,8 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-call plug#begin('~/.vim/plugged')   "" need to check each and every one
-   Plug 'w0rp/ale' 
+call plug#begin('~/.vim/plugged')
+   Plug 'dense-analysis/ale'
    Plug 'scrooloose/nerdtree'
    Plug 'sheerun/vim-polyglot'
    Plug 'tomtom/tcomment_vim'

@@ -8,7 +8,7 @@ fi
 export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH:$HOME/Library/Python/2.7/bin:$HOME/Library/Python/3.8/bin"
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
-
+ZSH_DISABLE_COMPFIX=true
 # Set Locale
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
