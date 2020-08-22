@@ -15,8 +15,7 @@ backup:
 
 brew:
 	- /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-	- while read -r brew_formulae;do brew install $brew_formulae;done < ./Brewfile
-	- while read -r cask_formulae;do brew cask install $cask_formulae;done < ./Caskfile
+	- brew bundle --file ./Brewfile
 
 pip:
 	- curl -s https://bootstrap.pypa.io/get-pip.py | python

@@ -14,7 +14,7 @@ cd tstrul-dotfiles
 ```
 make install
 OR: 
-./Install.sh
+./bootstrap.sh
 ```
 
 Or you can choose which tasks/installations by running

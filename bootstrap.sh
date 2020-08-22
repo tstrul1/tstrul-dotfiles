@@ -10,17 +10,23 @@ read
 
 # OSX Stuff
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    echo "Install homebrew binary"
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-    echo "Installing xcode"
-    xcode-select --install
+    if test ! $(which brew); then
+        echo "Install homebrew binary"
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+    fi
+    if test ! $(which xcode-select); then
+        echo "Installing xcode"
+        xcode-select --install
+    fi
     echo "Install homebrew packages"
     brew bundle --file ./Brewfile
 fi
 
 # Install pip
-echo "Install pip binary"
-curl -s https://bootstrap.pypa.io/get-pip.py | python
+if test ! $(which pip); then
+    echo "Install pip binary"
+    curl -s https://bootstrap.pypa.io/get-pip.py | python
+fi
 echo "Install pip packages"
 pip install --user -r requirements.txt
 
