@@ -1,5 +1,4 @@
 .dotfiles-backup
-.oh-my-zsh
 *.swp
 *.swo
 dotfiles/.vim/plugged/*
