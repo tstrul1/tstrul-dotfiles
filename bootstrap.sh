@@ -14,9 +14,8 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
     echo "Installing xcode"
     xcode-select --install
-    echo "Install brew packages"
-    while read -r brew_formulae;do brew install $brew_formulae;done < Brewfile
-    while read -r cask_formulae;do brew cask install $cask_formulae;done < Caskfile
+    echo "Install homebrew packages"
+    brew bundle --file ./Brewfile
 fi
 
 # Install pip
