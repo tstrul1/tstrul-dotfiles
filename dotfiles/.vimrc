@@ -131,7 +131,7 @@ set statusline+=%3*\%h%m%r\               " file flags (help, read-only, modifie
 set statusline+=%{fugitive#head()}\       " Git branch
 set statusline+=%3*\%l/%L\            " line count
 set statusline+=%3*\%y|                   " file type
-set statusline+=[%{strlen(&fenc)?&fenc:'none'}]               " long filename (trimmed to 25 chars)
+set statusline+=[%{strlen(&fenc)?&fenc:'none'}]               " encoding
 hi User1 ctermbg=black ctermfg=grey guibg=black guifg=grey
 hi User2 ctermbg=green ctermfg=black guibg=green guifg=black
 hi User3 ctermbg=black ctermfg=lightgreen guibg=black guifg=lightgreen
