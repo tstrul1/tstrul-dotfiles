@@ -6,5 +6,4 @@ awscli
 ansible
 pulumi
 skaffold
-terraform
 python-openstackclient
