@@ -202,12 +202,18 @@ endfunction
 
 
 
+
+
+
+
+
 " Key Mapping
 "
 let mapleader = ',' " Leader Key
 "
-nnoremap <leader>k :Keymap " Show keymaps (leader + k)
+nnoremap <leader>k :Keymap<CR> " Show keymaps (leader + k)
 nnoremap <leader><ESC> :nohlsearch<CR> " Exit search highlight (leader + esc)
+nnoremap <leader>sw :!rm %:p:h/.%:t.sw*<CR><CR> " Remove swap file
 nnoremap <leader>rt :retab<cr> " Convert all tabs to spaces (leader + tt)
 vnoremap <leader>64 y:let @"=system('base64 --decode', @")<cr>gvP " base64 decode (leader + 64)
 nnoremap <leader>s :call ToggleStatusline()<CR> " Statusline toggle (leader + s)
@@ -217,7 +223,8 @@ nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR> " Open/Close fo
 
 " Plugin - toggles
 " 
-map <leader>u :PlugInstall<CR> " Update vundle plugins (leader + u)
+map <leader>u :PlugInstall<CR> " Install new vundle plugins (leader + u)
+map <leader>uu :PlugUpdate<CR> " Update all vundle plugins (leader + uu)
 map <leader>d :ALEToggle<CR> " Check code (ALE) (leader + d)
 nmap <leader>j :NERDTreeToggle<CR> " Open folder tree (NERDTree) (leader + j)
 nmap <leader>o :NERDTreeFind<CR> " Open folder tree in current dir (NERDTree) (leader + o)
@@ -226,7 +233,7 @@ map <leader>i :IndentGuidesToggle<CR> " Show indentation lines (IndentGuides) (l
 map <leader>g :GitGutterToggle<CR> " Toggle gitgutter (leader + g)
 nnoremap <Leader>f :Files<CR> " FZF open files
 
-" Tabs and buffers
+" Tabs, buffers and splits
 "
 " Buffers
 nnoremap <S-Right> :bnext<CR> " Move between buffers(Shift + ->)
@@ -238,10 +245,16 @@ nnoremap <Leader>b :Buffers<CR> " FZF list buffers
 map <leader>t  :tabe<CR> " Open new tab  (leader + t)
 map <C-N> :tabn<CR> " Move to next tab (Ctrl + N)
 map <C-P>  :tabp<CR> " Move to previous tab (Ctrl + P)
+" Navigate splits
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 " Commands
 "
 " Sudo save (:W)
 command W execute "w !sudo tee % >/dev/null" 
 " Show kwymap
-command Keymap execute "!bat  ~/.vimrc -r 205:"
+command Keymap execute "!bat  ~/.vimrc -r 210:"
+

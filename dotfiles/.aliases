@@ -1,5 +1,4 @@
-alias zshconfig="vim ~/.zshrc"
-alias ohmyzsh="vim ~/.oh-my-zsh"
+alias vimzsh="vim ~/.zshrc"
 alias reload="source ~/.zshrc"
 alias tzgit='cd ~/Github_Projects'
 alias diff='colordiff'

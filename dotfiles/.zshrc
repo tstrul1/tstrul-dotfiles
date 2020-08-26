@@ -14,7 +14,6 @@ export LC_ALL=en_US.UTF-8
 
 if [[ -f /usr/local/opt/kube-ps1/share/kube-ps1.sh ]];then
     source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
-    unset POWERLEVEL9K_KUBECONTEXT_SHOW_ON_COMMAND
 fi
 
 if [ -f ~/.aliases ]; then
