@@ -10,6 +10,6 @@
 [diff "sopsdiffer"]
 	textconv = sops -d
 [alias]
-     cam = commit --amend --no-edit
+    cam = commit --amend --no-edit
 [core]
 	excludesfile = /Users/tzachis/.gitignore_global
