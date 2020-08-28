@@ -4,12 +4,12 @@
 [credential]
 	helper = cache --timeout=3600
 [push]
-    default = current
+	default = current
 [core]
 	editor = vim
 [diff "sopsdiffer"]
 	textconv = sops -d
 [alias]
-    cam = commit --amend --no-edit
+	cam = commit --amend --no-edit
 [core]
 	excludesfile = /Users/tzachis/.gitignore_global
