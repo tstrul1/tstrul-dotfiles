@@ -1,6 +1,7 @@
 "" General settings
 ""
 set nocompatible " This must be first, because it changes other options as a side effect.
+set t_Co=256    " 256 Colors"
 set title          " Changes the iterm title
 set autoread       " Re-read file if it was changed from the outside
 set showcmd " show latest command
@@ -189,24 +190,6 @@ function! ToggleCursorLine()
     endif
 endfunction
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 " Key Mapping
 "
 let mapleader = ',' " Leader Key
@@ -259,4 +242,4 @@ nnoremap <C-H> <C-W><C-H>
 " Sudo save (:W)
 command W execute "w !sudo tee % >/dev/null" 
 " Show kwymap
-command Keymap execute "!bat  ~/.vimrc -r 210:"
+command Keymap execute "!bat  ~/.vimrc -r 193:"

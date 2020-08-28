@@ -11,5 +11,6 @@
 	textconv = sops -d
 [alias]
 	cam = commit --amend --no-edit
+    plog= log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 [core]
-	excludesfile = /Users/tzachis/.gitignore_global
+	excludesfile = ~/.gitignore_global
