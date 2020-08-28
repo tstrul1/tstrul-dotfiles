@@ -76,6 +76,8 @@ call plug#begin('~/.vim/plugged')
    Plug 'junegunn/fzf.vim'
    Plug 'ap/vim-buftabline'
    Plug 'tpope/vim-fugitive'
+   Plug 'Raimondi/delimitMate'
+   Plug 'tpope/vim-surround'
 call plug#end()
 
 "" Plugin Configurations
@@ -205,8 +207,6 @@ endfunction
 
 
 
-
-
 " Key Mapping
 "
 let mapleader = ',' " Leader Key
@@ -220,7 +220,10 @@ nnoremap <leader>s :call ToggleStatusline()<CR> " Statusline toggle (leader + s)
 nnoremap <leader>n :call ToggleLineNumber()<CR> " Line number toggle (leader + n)
 nnoremap <leader>l :call ToggleCursorLine()<CR> " Cursor line  toggle (leader + l)
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR> " Open/Close folding (space)
-
+vnoremap (( "sc(<C-r>s)<Esc> " surround highlited text with () ( '((' )
+vnoremap "" "sc"<C-r>s"<Esc> " surround highlited text with "" ( '""' )
+vnoremap [[ "sc[<C-r>s]<Esc> " surround highlited text with [] ( "[[" )
+vnoremap {{ "sc{<C-r>s}<Esc> " surround highlited text with {} ( "{{" )
 " Plugin - toggles
 " 
 map <leader>u :PlugInstall<CR> " Install new vundle plugins (leader + u)
@@ -257,4 +260,3 @@ nnoremap <C-H> <C-W><C-H>
 command W execute "w !sudo tee % >/dev/null" 
 " Show kwymap
 command Keymap execute "!bat  ~/.vimrc -r 210:"
-

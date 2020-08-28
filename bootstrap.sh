@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-# Backup old file
-echo "Press Enter to start dotfiles backup:"
-read
-. takeBackup.sh
-
-echo "Press Enter to install packages (this could take a while...):"
-read
+# Install pip
+if test ! $(which pip); then
+    echo "Install pip binary"
+    curl -s https://bootstrap.pypa.io/get-pip.py | python
+fi
+echo "Install pip packages"
+pip install --user -r requirements.txt
 
 # OSX Stuff
 if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -22,13 +22,13 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     brew bundle --file ./Brewfile
 fi
 
-# Install pip
-if test ! $(which pip); then
-    echo "Install pip binary"
-    curl -s https://bootstrap.pypa.io/get-pip.py | python
-fi
-echo "Install pip packages"
-pip install --user -r requirements.txt
+# Backup old file
+echo "Press Enter to start dotfiles backup:"
+read
+. takeBackup.sh
+
+echo "Press Enter to install packages (this could take a while...):"
+read
 
 # zsh antigen + oh-my-zsh
 echo "Configure antigen and oh-my-zsh"
