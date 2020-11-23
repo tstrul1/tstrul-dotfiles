@@ -36,16 +36,17 @@ antigen bundle common-aliases
 antigen bundle colorize
 antigen bundle colored-man-pages
 antigen bundle command-not-found
-antigen bundle git
 antigen bundle terraform
 antigen bundle docker
 antigen bundle aws
-antigen bundle gcloud
-antigen bundle heroku
 antigen bundle kubectl
-antigen bundle minikube
-antigen bundle helm
-antigen bundle gradle
+antigen bundle sudo
+#antigen bundle git
+#antigen bundle gcloud
+#antigen bundle heroku
+#antigen bundle minikube
+#antigen bundle helm
+#antigen bundle gradle
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-syntax-highlighting
@@ -63,5 +64,21 @@ zstyle :omz:plugins:ssh-agent identities id_rsa deployerL.pem  deployer.pem  id_
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# Virtualenvwrapper
+export WORKON_HOME=~/virtual_envs/
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+export VIRTUALENVWRAPPER_VIRTUALENV=/Users/tzachis/Library/Python/3.7/bin/virtualenv
+source /usr/local/bin/virtualenvwrapper.sh
+
 # Fuzzy finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Useful functions
+
+function repo {
+        cd ~/git_repositories/$1
+}
+function _repo {
+    _arguments "1: :($(ls ~/git_repositories))"
+}
+compdef _repo repo

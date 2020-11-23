@@ -1,16 +1,11 @@
 alias vimzsh="vim ~/.zshrc"
 alias reload="source ~/.zshrc"
-alias tzgit='cd ~/Github_Projects'
+alias tzgit='cd ~/git_repositories'
 alias diff='colordiff'
-alias startweb='python -m SimpleHTTPServer 8000'
 alias svim="sudo vim"
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-alias please='sudo $(fc -ln -1)'
+alias flushdns='sudo killall -HUP mDNSResponder'
 fixhost() {
         sed -e $1d -i ~/.ssh/known_hosts
 }
 function kubeshell() { kubectl exec -ti $@ -- /bin/sh; }
-source ~/Credentials/aliases.zsh
+source ~/.credentials/aliases.zsh

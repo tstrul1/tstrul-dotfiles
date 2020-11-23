@@ -1,9 +1,9 @@
 virtualenv
+virtualenvwrapper
 pipenv
 pipreqs
 pytest
 awscli
 ansible
 pulumi
-skaffold
 python-openstackclient
